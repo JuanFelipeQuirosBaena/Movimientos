@@ -48,3 +48,12 @@ class MovimientoUpdateView(LoginRequiredMixin, AdminRequiredMixin, UpdateView):
     def form_invalid(self, form):
         messages.error(self.request, "Error al actualizar el movimiento. Revisa los datos ingresados.")
         return super().form_invalid(form)
+
+class MovimientoDeleteView(LoginRequiredMixin, AdminRequiredMixin, DeleteView):
+    model = Movimiento
+    template_name = 'movimientos/movimiento_delete.html'
+    success_url = reverse_lazy('movimientos:list')
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, "Movimiento eliminado exitosamente.")
+        return super().delete(request, *args, **kwargs)
