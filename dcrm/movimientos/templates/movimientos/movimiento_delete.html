@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Eliminar Movimiento</h4>
+                </div>
+                <div class="card-body">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <p class="lead">¿Estás seguro de que deseas eliminar el siguiente movimiento?</p>
+                    <ul class="list-group mb-4">
+                        <li class="list-group-item"><strong>ID:</strong> {{ movimiento.id_movimiento }}</li>
+                        <li class="list-group-item"><strong>Tipo:</strong> {{ movimiento.tipo_movimiento.nombre }}</li>
+                        <li class="list-group-item"><strong>Usuario:</strong> {{ movimiento.usuario.username }}</li>
+                        <li class="list-group-item"><strong>Fecha:</strong> {{ movimiento.created_at|date:"d/m/Y H:i" }}</li>
+                    </ul>
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{% url 'movimientos:list' %}" class="btn btn-secondary">Cancelar</a>
+                            <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
