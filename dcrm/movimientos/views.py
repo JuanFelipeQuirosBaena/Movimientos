@@ -20,6 +20,11 @@ class MovimientoListView(LoginRequiredMixin, ListView):
     context_object_name = 'movimientos'
     ordering = ['-created_at']
 
+class MovimientoDetailView(LoginRequiredMixin, DetailView):
+    model = Movimiento
+    template_name = 'movimientos/movimiento_detail.html'
+    context_object_name = 'movimiento'
+
 class MovimientoCreateView(LoginRequiredMixin, AdminRequiredMixin, CreateView):
     model = Movimiento
     form_class = MovimientoForm
