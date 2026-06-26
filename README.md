@@ -116,33 +116,13 @@ SENA ADSO
                    ▼
              Base de Datos
 
-## Arquitectura por capas
-
-+--------------------------------+
-|      Capa de Presentación      |
-| Templates (HTML)               |
-+--------------------------------+
-               │
-               ▼
-+--------------------------------+
-|     Capa de Negocio            |
-| Views.py                       |
-| Forms.py                       |
-+--------------------------------+
-               │
-               ▼
-+--------------------------------+
-|      Capa de Datos             |
-| Movimiento                     |
-| TipoMovimiento                 |
-| User (Django)                  |
-+--------------------------------+
-               │
-               ▼
-+--------------------------------+
-|      Base de Datos SQLite      |
-+--------------------------------+
-
 # Modelado UML (Diagrama de clases)
 
 <img width="289" height="283" alt="image" src="https://github.com/user-attachments/assets/48e2041c-5f69-4aa6-989a-ce1917ec1d7a" />
+
+# Modelado UML (Diagrama de componentes)
+<img width="251" height="420" alt="image" src="https://github.com/user-attachments/assets/8af83b79-d8ed-4ff6-817b-06ab144940c1" />
+
+
+# Modelado UML (Diagrama de secuencia)
+<img width="458" height="355" alt="image" src="https://github.com/user-attachments/assets/90bdf8f5-cce1-4e40-bca7-dc14c6531f62" />
