@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h4 class="mb-0">Detalles del Movimiento #{{ movimiento.id_movimiento }}</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4">ID de Movimiento:</dt>
+                        <dd class="col-sm-8">{{ movimiento.id_movimiento }}</dd>
+
+                        <dt class="col-sm-4">Tipo de Movimiento:</dt>
+                        <dd class="col-sm-8">{{ movimiento.tipo_movimiento.nombre }}</dd>
+                        
+                        <dt class="col-sm-4">Descripción del Tipo:</dt>
+                        <dd class="col-sm-8">{{ movimiento.tipo_movimiento.descripcion|default:"N/A" }}</dd>
+
+                        <dt class="col-sm-4">Usuario Creador:</dt>
+                        <dd class="col-sm-8">{{ movimiento.usuario.username }} ({{ movimiento.usuario.get_full_name }})</dd>
+
+                        <dt class="col-sm-4">Fecha de Creación:</dt>
+                        <dd class="col-sm-8">{{ movimiento.created_at|date:"d/m/Y H:i:s" }}</dd>
+                        
+                        <dt class="col-sm-4">Última Actualización:</dt>
+                        <dd class="col-sm-8">{{ movimiento.updated_at|date:"d/m/Y H:i:s" }}</dd>
+                    </dl>
+                </div>
+                <div class="card-footer bg-light d-flex justify-content-between">
+                    <a href="{% url 'movimientos:list' %}" class="btn btn-secondary">Volver a la lista</a>
+                    {% if user.is_staff or user.is_superuser %}
+                    <div>
+                        <a href="{% url 'movimientos:update' movimiento.id_movimiento %}" class="btn btn-warning">Editar</a>
+                        <a href="{% url 'movimientos:delete' movimiento.id_movimiento %}" class="btn btn-danger">Eliminar</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
