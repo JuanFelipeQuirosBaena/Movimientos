@@ -97,3 +97,52 @@ python manage.py runserver
 
 Juan Felipe
 SENA ADSO
+
+## Arquitectura lógica
+
+                Usuario
+                   │
+                   ▼
+          Interfaz (Templates)
+                   │
+                   ▼
+              Views.py
+                   │
+         ┌─────────┴─────────┐
+         ▼                   ▼
+     Movimiento          TipoMovimiento
+         │                   │
+         └─────────┬─────────┘
+                   ▼
+             Base de Datos
+
+## Arquitectura por capas
+
++--------------------------------+
+|      Capa de Presentación      |
+| Templates (HTML)               |
++--------------------------------+
+               │
+               ▼
++--------------------------------+
+|     Capa de Negocio            |
+| Views.py                       |
+| Forms.py                       |
++--------------------------------+
+               │
+               ▼
++--------------------------------+
+|      Capa de Datos             |
+| Movimiento                     |
+| TipoMovimiento                 |
+| User (Django)                  |
++--------------------------------+
+               │
+               ▼
++--------------------------------+
+|      Base de Datos SQLite      |
++--------------------------------+
+
+# Modelado UML (Diagrama de clases)
+
+<img width="289" height="283" alt="image" src="https://github.com/user-attachments/assets/48e2041c-5f69-4aa6-989a-ce1917ec1d7a" />
