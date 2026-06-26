@@ -19,3 +19,18 @@ class MovimientoListView(LoginRequiredMixin, ListView):
     template_name = 'movimientos/movimiento_list.html'
     context_object_name = 'movimientos'
     ordering = ['-created_at']
+
+class MovimientoCreateView(LoginRequiredMixin, AdminRequiredMixin, CreateView):
+    model = Movimiento
+    form_class = MovimientoForm
+    template_name = 'movimientos/movimiento_create.html'
+    success_url = reverse_lazy('movimientos:list')
+
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        messages.success(self.request, "Movimiento creado exitosamente.")
+        return super().form_valid(form)
+        
+    def form_invalid(self, form):
+        messages.error(self.request, "Error al crear el movimiento. Revisa los datos ingresados.")
+        return super().form_invalid(form)
