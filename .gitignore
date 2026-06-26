@@ -34,5 +34,4 @@ build/
 *.egg-info/
 *.egg
 
-# Script temporal
-fake_commits.py
+

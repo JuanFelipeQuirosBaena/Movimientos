@@ -1,35 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Registro nuevo usuario ✍🏼</h1>
-<br />
-
-
-<form method="post" action="">
-    {% csrf_token %}
-   
-    {% if form.errors %}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Error de registro:</strong> por favor revise los datos ingresados.
-        <ul>
-            {% for field in form %}
-                {% for error in field.errors %}
-                    <li><strong>{{ field.label }}:</strong> {{ error }}</li>
-                {% endfor %}
-            {% endfor %}
-        </ul>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="card card-modern mx-auto" style="max-width: 640px; margin-top: 2rem;">
+    <div class="card-header bg-transparent">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h3 class="mb-1">🌾 Registro de productor</h3>
+                <p class="mb-0 text-muted">Únete y empieza a controlar tus movimientos en el entorno agrario.</p>
+            </div>
+        </div>
     </div>
-    {% endif %}
+    <div class="card-body">
+        {% if form.errors %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Error de registro:</strong> por favor revise los datos ingresados.
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
 
-
-    {{ form.as_p }}
-
-
-    <button type="submit" class="btn btn-primary">
-        Registrar
-    </button>
-</form>
-
+        <form method="post" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <a href="{% url 'home' %}" class="btn btn-outline-success btn-modern-outline">Volver</a>
+                <button type="submit" class="btn btn-success btn-modern">Crear cuenta</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 {% endblock %}

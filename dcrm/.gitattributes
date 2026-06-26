@@ -1,0 +1,5 @@
+# Forzar LF (estilo Linux) para archivos de texto, incluso en Windows
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.py text eol=lf
